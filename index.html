@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Churri Slots - Bono del 35%</title>
-  <meta name="description" content="Aprovechá el bono exclusivo del 35% por tiempo limitado. Atención por WhatsApp. 100% Seguro.">
+  <meta name="description" content="Juegos online seguros. Reclama tu bono exclusivo del 35%. Atención personalizada por WhatsApp.">
+  <meta name="facebook-domain-verification" content="i1oxxjeb7egefd9tprjo3k3uah8akj" />
+
   <!-- Pixel Meta -->
   <script>
     !function(f,b,e,v,n,t,s){
@@ -14,118 +15,107 @@
       if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
       n.queue=[];t=b.createElement(e);t.async=!0;
       t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1804654787136659');
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1804654787136659'); 
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1804654787136659&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=1804654787136659&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- Fin Pixel -->
 
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
       color: #fff;
+      font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 20px;
+      font-size: 1.5em;
+      background-color: #111;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+    .container {
       padding: 40px 20px;
     }
     h1 {
-      font-size: 1.8em;
       color: #ffcc00;
-      margin-bottom: 10px;
     }
-    .timer {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+    .bonus {
+      font-size: 2em;
+      color: #00ff99;
+      margin: 20px 0;
     }
-    .btn {
-      background: #00c851;
+    .button {
+      background-color: #25d366;
       color: white;
       padding: 15px 30px;
+      font-size: 1.2em;
       border: none;
       border-radius: 10px;
-      font-size: 1.2em;
       cursor: pointer;
-    }
-    .btn:hover {
-      background: #007e33;
-    }
-    .info {
-      margin-top: 25px;
-      font-size: 0.95em;
+      margin-top: 30px;
     }
     .modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
       z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.8);
     }
     .modal-content {
-      background: #222;
+      background-color: #222;
+      margin: 20% auto;
       padding: 20px;
       border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
     }
-    .modal button {
-      background: #28a745;
+    .modal-content p {
+      margin-bottom: 20px;
+    }
+    .modal-content button {
       padding: 10px 20px;
-      margin-top: 10px;
       font-size: 1em;
-    }
-    .warning {
-      font-size: 0.8em;
-      color: #ccc;
-      margin-top: 20px;
+      background-color: #25d366;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Churri Slots - ¡Recibí 35% de Bono!</h1>
-  <div class="timer">⏳ Bono disponible por: <span id="countdown">03:00</span></div>
-  <button class="btn" id="openModal">¡Quiero mi bono!</button>
-
-  <div class="info">
-    ✅ Atención por WhatsApp | 🔒 100% Seguro | 🚫 Solo +18
-    <div class="warning">Juego responsable. Prohibido para menores de 18 años.</div>
+  <header>CHURRI SLOTS</header>
+  <div class="container">
+    <h1>🎰 Bienvenido a Churri Slots 🎰</h1>
+    <p class="bonus">🎁 ¡Bono del 35% por tiempo limitado! 🎁</p>
+    <button class="button" onclick="openModal()">Reclamar Bono</button>
   </div>
 
-  <div class="modal" id="confirmationModal">
+  <div class="modal" id="modal">
     <div class="modal-content">
-      <p>¿Estás seguro de querer continuar a WhatsApp?</p>
-      <button id="continueBtn">Sí, continuar</button>
+      <p>Estás por reclamar tu bono vía WhatsApp. ¿Deseas continuar?</p>
+      <button onclick="redirectToWhatsApp()">Sí, continuar</button>
     </div>
   </div>
 
   <script>
-    // Temporizador 3 minutos
-    let time = 180;
-    const countdownEl = document.getElementById("countdown");
-    setInterval(() => {
-      if (time > 0) {
-        time--;
-        const mins = String(Math.floor(time / 60)).padStart(2, "0");
-        const secs = String(time % 60).padStart(2, "0");
-        countdownEl.textContent = `${mins}:${secs}`;
-      }
-    }, 1000);
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+    }
 
-    const modal = document.getElementById("confirmationModal");
-    document.getElementById("openModal").onclick = () => {
-      modal.style.display = "flex";
-    };
-    document.getElementById("continueBtn").onclick = () => {
+    function redirectToWhatsApp() {
       fbq('track', 'Contact');
-      window.location.href = "https://wa.me/542235447767?text=Hola%2C%20vengo%20por%20el%20bono%20del%2035%25%20de%20Churri%20Slots";
-    };
+      window.location.href = 'https://wa.me/542235447767?text=Hola!%20Quiero%20reclamar%20mi%20bono%20del%2035%%20en%20Churri%20Slots';
+    }
   </script>
 </body>
 </html>
